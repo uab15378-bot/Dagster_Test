@@ -1,4 +1,5 @@
-from dagster import asset, Output  # <--- Added Output import
+from dagster import asset, Output 
+import os
 import random
 from datetime import datetime
 
@@ -7,20 +8,20 @@ def br_asset():
     """
     Sample asset named 'br_asset' with visible Metadata.
     """
-    # 1. Simulate fetching dummy data
+    current_env = os.getenv("ENV_VARIABLE", "Unknown Environment")
+
     total_users = random.randint(1000, 5000)
     active_users = int(total_users * random.uniform(0.4, 0.8))
 
-    # 2. Create the dictionary
     metrics = {
-        "status": "Branch Deployment Success",
+        "status": "Success",
         "generated_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+        "environment_source": current_env, 
         "total_users": total_users,
         "active_users": active_users
     }
 
-    # 3. Return as Output with Metadata (This makes it visible in UI)
     return Output(
-        value=metrics,      # The actual data passed to downstream assets
-        metadata=metrics    # The data shown in the UI
+        value=metrics,
+        metadata=metrics
     )
