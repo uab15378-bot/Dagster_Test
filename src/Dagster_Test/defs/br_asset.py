@@ -25,4 +25,3 @@ def br_asset():
         value=metrics,
         metadata=metrics
     )
-    
