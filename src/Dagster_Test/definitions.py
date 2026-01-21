@@ -1,9 +1,8 @@
-from pathlib import Path
+from dagster import Definitions
+from .assets import monitoring_asset
+from .jobs import monitoring_job  # import your job
 
-from dagster import definitions, load_from_defs_folder
-
-
-@definitions
-def defs():
-    return load_from_defs_folder(path_within_project=Path(__file__).parent)
-    
+defs = Definitions(
+    assets=[monitoring_asset],
+    jobs=[monitoring_job],  # include the job here
+)
