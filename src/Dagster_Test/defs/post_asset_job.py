@@ -8,7 +8,7 @@ api_trigger_job = define_asset_job(
 )
 
 
-test_schedule = ScheduleDefinition(
+br_asset_test_schedule = ScheduleDefinition(
     name="br_asset_test_schedule",
     job=api_trigger_job,
     cron_schedule="*/5 * * * *",  # Every 5 minutes
