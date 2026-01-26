@@ -7,7 +7,7 @@ def monitoring_asset(context):
     # ---------------------------------
     # DELAY PIPELINE START (2 minutes)
     # ---------------------------------
-    delay_seconds = 120
+    delay_seconds = 200
     context.log.info(f"Delaying pipeline start by {delay_seconds} seconds...")
     time.sleep(delay_seconds)
 
